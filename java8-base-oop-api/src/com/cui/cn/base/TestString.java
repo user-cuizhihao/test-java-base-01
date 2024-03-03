@@ -6,4 +6,9 @@ public class TestString {
         System.out.println(11); // aaa
     }
 
+    // java基础
+    public void method01(){
+
+    }
 }
+
