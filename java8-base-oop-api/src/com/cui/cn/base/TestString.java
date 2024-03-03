@@ -8,7 +8,7 @@ public class TestString {
 
     // java基础
     public void method01(){
-
+        System.out.println(999);
     }
 }
 
