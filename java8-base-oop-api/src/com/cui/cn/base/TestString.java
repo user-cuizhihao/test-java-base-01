@@ -6,6 +6,10 @@ public class TestString {
         System.out.println(11); // aaa
     }
 
+    public void method001(){
+        System.out.println("主分支的改变");
+    }
+
     public void method02(){
         System.out.println("这是次分支的方法");
     }
