@@ -11,7 +11,7 @@ public class TestString {
     }
 
     public void method02(){
-        System.out.println("这是次分支的方法");
+        System.out.println("这是次分支的方法，也做了更改");
     }
 
     // java基础
