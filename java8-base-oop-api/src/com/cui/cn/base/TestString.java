@@ -8,7 +8,6 @@ public class TestString {
 
     public void method001(){
         System.out.println("主分支的改变，了更改");
-        System.out.println("fasd");
     }
 
     public void method02(){
