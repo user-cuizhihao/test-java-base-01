@@ -3,6 +3,7 @@ package com.cui.cn.base;
 public class TestString {
 
     public static void main(String[] args) {
+        System.out.println(1111);
 
         TestString t1 = new TestString();
         int i = t1.method001();
