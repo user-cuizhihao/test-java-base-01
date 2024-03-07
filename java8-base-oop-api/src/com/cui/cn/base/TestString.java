@@ -4,6 +4,7 @@ public class TestString {
 
     public static void main(String[] args) {
         System.out.println(1111);
+        System.out.println(2222);
 
         TestString t1 = new TestString();
         int i = t1.method001();
