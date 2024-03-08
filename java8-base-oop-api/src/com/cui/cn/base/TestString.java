@@ -7,7 +7,7 @@ public class TestString {
     }
 
     private void testMethod(){
-
+        System.out.println();
     }
 
 
