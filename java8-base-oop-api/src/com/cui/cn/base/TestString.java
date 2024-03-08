@@ -6,6 +6,10 @@ public class TestString {
         System.out.println(11); // aaa
     }
 
+    private void testMethod(){
+
+    }
+
 
 }
 
