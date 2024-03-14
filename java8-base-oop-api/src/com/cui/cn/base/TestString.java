@@ -1,17 +1,33 @@
 package com.cui.cn.base;
 
+import java.util.Arrays;
+
 public class TestString {
 
     public static void main(String[] args) {
 
         TestString t1 = new TestString();
-        t1.method05();
+        t1.method06();
+//        t1.method05();
 //        t1.method04();
 //        t1.method03();
         /*int i = t1.method001();
         int i1 = t1.method002();
         System.out.println(i1);
         System.out.println(i);*/
+    }
+
+    /**
+     * 定义数组和数组的初始化
+     */
+    public void method06(){
+
+        int [] arr = {};
+        String arrSrt[] = new String[10];
+        boolean [] b = new boolean[10];
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arrSrt));
+        System.out.println(Arrays.toString(b));
     }
 
     public void method05(){
