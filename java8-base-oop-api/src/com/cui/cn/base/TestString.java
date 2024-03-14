@@ -7,7 +7,8 @@ public class TestString {
     public static void main(String[] args) {
 
         TestString t1 = new TestString();
-        t1.method06();
+        t1.method08();
+//        t1.method06();
 //        t1.method05();
 //        t1.method04();
 //        t1.method03();
@@ -15,6 +16,21 @@ public class TestString {
         int i1 = t1.method002();
         System.out.println(i1);
         System.out.println(i);*/
+    }
+
+    // 数组的复制
+    public void method08(){
+
+        int [] a1 = new int[]{1,23412,45321,546,0,6345,342,34567,423792436,78};
+        int a2[] = new int[100];
+        System.out.println(a1.length); // 10
+        // 方式二 数组的扩容
+        int[] ints = Arrays.copyOf(a1, 5); //
+        System.out.println(Arrays.toString(ints));
+
+        // 方式一
+        System.arraycopy(a1,2,a2,0,5);
+        System.out.println(Arrays.toString(a2)); // 45321,546,0,6345,342,0...
     }
 
     /**
