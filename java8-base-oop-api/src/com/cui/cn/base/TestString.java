@@ -1,13 +1,14 @@
 package com.cui.cn.base;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class TestString {
 
     public static void main(String[] args) {
 
         TestString t1 = new TestString();
-        t1.method08();
+        t1.method09();
+//        t1.method08();
 //        t1.method06();
 //        t1.method05();
 //        t1.method04();
@@ -16,6 +17,105 @@ public class TestString {
         int i1 = t1.method002();
         System.out.println(i1);
         System.out.println(i);*/
+    }
+
+    // 数组算法
+    public void method09(){
+
+        Integer[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+        Integer[] b = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+        boolean equals = Arrays.equals(a, b);
+        System.out.println(equals);
+
+
+        //目标数组
+        /*int target = 9;
+        int [] arr1 = {1,2,3,4,5,6,7,8,9};
+        int index = 0;
+        int maxIndex = arr1.length-1;
+        int minIndex = 0;
+        while(minIndex <= maxIndex){
+            // 中间值
+            int zj = (minIndex + maxIndex) / 2;
+            if(arr1[zj] > target){
+                maxIndex = zj-1;
+            }else if(arr1[zj] < target){
+                minIndex = zj+1;
+            }else{
+                index = zj;
+                break;
+            }
+        }
+        System.out.println(index);*/
+
+        // 计算目标数组中的两个元素和等于指定元素
+        /*int target = 10;
+        int [] arr1 = {1,2,3,4,5,6,7,8,9};
+
+        int [] index = new int[2];
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < arr1.length; i++) {
+            if(map.containsKey(arr1[i])){
+                index[0] = map.get(arr1[i]);
+                index[1] = i;
+            }
+            map.put(target-arr1[i],i);
+        }
+        System.out.println(Arrays.toString(index));*/
+
+        /*List<Map<Integer,Integer>> list = new ArrayList<>();
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = i+1; j < arr1.length; j++) {
+                if((arr1[i]+arr1[j]) == target){
+                    Map<Integer,Integer> map = new HashMap<>();
+                    map.put(i,arr1[i]);
+                    map.put(j,arr1[j]);
+                    list.add(map);
+                }
+            }
+        }
+        System.out.println(list);*/
+
+        /*int [] arr = {1,321,54,345,23445,3,4536,476,2534,123};
+        System.out.println(arr.length);
+        // 选择排序
+        for (int i = 0; i < arr.length-1; i++) {
+            for (int j = i+1; j < arr.length; j++) {
+                if(arr[i] > arr[j]){
+                    int temp = arr[i]; // 定义置换的值
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        System.out.println(arr.length);
+        System.out.println(Arrays.toString(arr));*/
+
+        // 冒泡排序
+        /*for (int i = 0; i < arr.length-1; i++) {
+            for (int j = 0; j < arr.length-1-i; j++) {
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j]; // 定义置换的值
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        System.out.println(arr.length);
+        System.out.println(Arrays.toString(arr));*/
+
+        // 统计数组中，每个元素出现的次数
+        /*int [] arr = {1,2,3,4,5,6,7,8,9,0,2,3,4,5,6,7,1,1};
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i : arr) {
+            if(map.containsKey(i)){
+                Integer value = map.get(i);
+                map.put(i,++value);
+            }else{
+                map.put(i,1);
+            }
+        }
+        System.out.println(map);*/
     }
 
     // 数组的复制
