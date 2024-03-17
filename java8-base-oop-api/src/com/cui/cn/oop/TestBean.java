@@ -8,7 +8,12 @@ public class TestBean {
 
     public static void main(String[] args) {
 
-        StudentBean sb1 = new StudentBean();
+        ThisBean tb = new ThisBean();
+        tb.method01("this is : "+tb.toString());
+        ThisBean tb1 = new ThisBean();
+        tb.method01("this is : "+tb1.toString());
+
+        /*StudentBean sb1 = new StudentBean();
         sb1.setUuid(1001);
         StudentBean sb2 = new StudentBean();
         sb2.setUuid(100);
@@ -18,7 +23,7 @@ public class TestBean {
         System.out.println(sb1.hashCode());
         System.out.println(sb2.hashCode());
 
-        System.out.println(sb1.equals(sb2));
+        System.out.println(sb1.equals(sb2));*/
     }
 
     public void method01(){
