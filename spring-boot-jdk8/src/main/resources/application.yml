@@ -1,0 +1,4 @@
+server:
+  servlet:
+    context-path: /app # 配置服务默认访问路径的前缀
+  port: 8888 # 配置端口号
