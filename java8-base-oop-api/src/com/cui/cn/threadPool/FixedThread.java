@@ -11,10 +11,56 @@ public class FixedThread {
     public static void main(String[] args) {
 
         FixedThread fixedThread = new FixedThread();
-        fixedThread.method07();
+        fixedThread.method08();
     }
 
-    public void method07(){
+    public void method08() {
+
+        ThreadPoolExecutor threadPoolExecutor = methodThreadPoolExecutor();
+        for (int i = 0; i < 20; i++) {
+            int fi = i;
+            threadPoolExecutor.submit(() -> {
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName() + " " + fi);
+            });
+        }
+    }
+
+    public ThreadPoolExecutor methodThreadPoolExecutor() {
+
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+                5,
+                10,
+                60,
+                TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(5),
+                new RejectedExecutionHandler() {
+                    @Override
+                    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                        Thread thread = new Thread(r);
+                        String name = thread.getName();
+                        // 启动线程
+                        // thread.start(); // 交由主线程执行
+                        // 线程池饱和后删除后面新的任务线程，并返回false
+                        //boolean remove = executor.remove(r);
+                        BlockingQueue<Runnable> queue = executor.getQueue();
+                        try {
+                            queue.put(thread);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println(queue);
+                    }
+                }
+        );
+        return threadPoolExecutor;
+    }
+
+    public void method07() {
 
         ExecutorService executorService = method06();
         for (int i = 0; i < 15; i++) {
@@ -36,7 +82,7 @@ public class FixedThread {
     /**
      * 自定义线程池
      */
-    public ExecutorService method06(){
+    public ExecutorService method06() {
 
         ExecutorService executorService = new ThreadPoolExecutor(
                 5, // 核心线程数
@@ -44,7 +90,7 @@ public class FixedThread {
                 30, // 线程存活时间
                 TimeUnit.SECONDS, // 超出核心线程的线程存活时间，秒
                 new LinkedBlockingDeque<>(), // 任务队列
-                new ThreadPoolExecutor.DiscardPolicy(){
+                new ThreadPoolExecutor.DiscardPolicy() {
                     @Override
                     public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
                         System.out.println(e.getActiveCount());
@@ -54,7 +100,7 @@ public class FixedThread {
         return executorService;
     }
 
-    public void method05(){
+    public void method05() {
 
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
@@ -62,7 +108,7 @@ public class FixedThread {
             public void run() {
                 System.out.println("定时任务");
             }
-        },2,3,TimeUnit.SECONDS);
+        }, 2, 3, TimeUnit.SECONDS);
 
         /*ScheduledFuture<?> tow1 = scheduledExecutorService.schedule(new Runnable() {
             @Override
@@ -73,15 +119,15 @@ public class FixedThread {
 
     }
 
-    public void method04(){
+    public void method04() {
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         MyThreadRunnable myThreadRunnable = new MyThreadRunnable();
         for (int i = 0; i < 5; i++) {
-            executorService.submit(()->{
-                System.out.println(Thread.currentThread().getName()+ " 开始执行");
-                System.out.println(Thread.currentThread().getName()+ " 处理业务逻辑");
-                System.out.println(Thread.currentThread().getName()+ " 执行结束");
+            executorService.submit(() -> {
+                System.out.println(Thread.currentThread().getName() + " 开始执行");
+                System.out.println(Thread.currentThread().getName() + " 处理业务逻辑");
+                System.out.println(Thread.currentThread().getName() + " 执行结束");
             });
         }
 
@@ -90,7 +136,7 @@ public class FixedThread {
     /**
      * 方式三：
      */
-    public void method03(){
+    public void method03() {
         ExecutorService executorService = Executors.newCachedThreadPool();
         MyThreadRunnable myThreadRunnable = new MyThreadRunnable();
         for (int i = 0; i < 100; i++) {
@@ -101,7 +147,7 @@ public class FixedThread {
     /**
      * 方式二：固定线程数量的线程池
      */
-    public void method02(){
+    public void method02() {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         MyThreadRunnable myThreadRunnable = new MyThreadRunnable();
         for (int i = 0; i < 10; i++) {
@@ -112,7 +158,7 @@ public class FixedThread {
     /**
      * 方式一：使用自定义的线程来创建线程数
      */
-    public void method01(){
+    public void method01() {
         MyThreadFactory myThreadFactory = new MyThreadFactory("oh god：");
         ExecutorService executorService = Executors.newFixedThreadPool(5, myThreadFactory);
         for (int i = 0; i < 5; i++) {
