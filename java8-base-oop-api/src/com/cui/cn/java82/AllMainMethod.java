@@ -3,6 +3,7 @@ package com.cui.cn.java82;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -30,8 +31,62 @@ public class AllMainMethod {
     public static void main(String[] args) {
 
         AllMainMethod allMainMethod = new AllMainMethod();
-        allMainMethod.method03();
+        allMainMethod.method06();
         
+    }
+
+    public void method06(){
+
+        List<Emp82> emp82s = listEmp();
+        Iterator<Emp82> iterator = emp82s.iterator();
+        while (iterator.hasNext()){
+            Emp82 emp = iterator.next();
+            BigDecimal money = emp.getMoney();
+            if(money.compareTo(new BigDecimal("5000"))>=0){
+                System.out.println(emp);
+            }
+
+        }
+
+    }
+
+    /**
+     * 获取大于都等于35岁以上的员工信息
+     */
+    public void method05(){
+
+        List<Emp82> emp82s = listEmp();
+        for (int i = 0; i < emp82s.size(); i++) {
+            Emp82 emp82 = emp82s.get(i);
+            if(emp82.getAge().compareTo(35)>=0){
+                System.out.println(emp82);
+            }
+        }
+        System.out.println("=========");
+        for (Emp82 emp82 : emp82s) {
+            Integer age = emp82.getAge();
+            if(age.compareTo(35)>=0){
+                System.out.println(emp82);
+            }
+        }
+
+    }
+
+    public void method04(){
+
+        List<Emp82> emp82s = listEmp();
+        Iterator<Emp82> iterator = emp82s.iterator();
+        while (iterator.hasNext()){
+            Emp82 next = iterator.next();
+            emp82s.remove(next);
+        }
+        System.out.println(emp82s);
+        /*for (int i = 0; i < emp82s.size(); i++) {
+            Emp82 emp82 = emp82s.get(i);
+            if(emp82.getMoney().compareTo(new BigDecimal("7000")) == 0){
+                emp82s.remove(i);
+            }
+        }*/
     }
 
     public void method03(){
