@@ -312,12 +312,12 @@ public class Test01 {
 
     public void method09() {
 
-        Student student = new Student(10);
+       /* Student student = new Student(10);
         String name = student.name;
         Integer number = student.number;
         System.out.println(number);
         System.out.println(name);
-
+*/
     }
 
     public void method08() {
