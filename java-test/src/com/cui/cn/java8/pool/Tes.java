@@ -27,8 +27,14 @@ public class Tes {
                 new RejectedExecutionHandler() {
                     @Override
                     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-                        Thread t = new Thread(r,"处理");
-                        t.start();
+                        /*Thread t = new Thread(r,"处理");
+                        t.start();*/
+                        BlockingQueue<Runnable> queue = executor.getQueue();
+                        try {
+                            queue.put(r);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
         );
